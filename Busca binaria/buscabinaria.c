@@ -1,7 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
+#define N 5
 
-int buscaBinaria(int *V, int k, int inicio, int fim){
+int buscaBinariaRecursiva(int *V, int k, int inicio, int fim){
     int meio;
     if(inicio>fim){
         return -1;
@@ -14,6 +15,25 @@ int buscaBinaria(int *V, int k, int inicio, int fim){
     }else{
         return buscaBinaria(V, k, meio+1, fim);
     }
+}
+
+int buscaBinaria(int *v, int k){
+    int i = 0;
+    int j = N;
+    int meio;
+    while (i <= j)
+    {
+        meio=(i+j)/2;
+        if (v[meio] == k){
+            return meio;
+        }else if(k < v[meio]){
+            j = meio-1;
+        }else{
+            i = meio + 1;
+        }
+        
+    }
+    return -1;
 }
 
 
