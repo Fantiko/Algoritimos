@@ -5,9 +5,9 @@
 
 void ordenavet(int *vet){
     int aux;
-    for (int i = MAX; i > 2; i--)
+    for (int i = MAX-1; i >= 1; i--)
     {
-        for (int j = 0; j != i; j++)
+        for (int j = 0; j < i; j++)
         {
             if (vet[j] > vet[j+1])
             {
