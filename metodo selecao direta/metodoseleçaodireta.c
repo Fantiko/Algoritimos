@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #define MAX 5
 
-void ordenaSD(int vet[]){
+void ordenaSD(int *vet){
 int i, j, temp;
 
 for (i = 0; i < MAX; i++, j++){
@@ -16,7 +16,7 @@ for (i = 0; i < MAX; i++, j++){
 }
 }
 
-void MSD(int vet[]){
+void MSD(int *vet){
     int i, j, posmenor, aux;
 
     for  (i = 0; i < MAX; i++){
@@ -35,13 +35,15 @@ void MSD(int vet[]){
 
 void selection_sort(int num[], int tam) { 
   int i, j, min, aux;
-  for (i = 0; i < (tam-1); i++) 
+  for (i = 0; i < tam; i++) 
   {
      min = i;
      for (j = (i+1); j < tam; j++) {
+        
        if(num[j] < num[min]) 
          min = j;
      }
+
      if (i != min) {
        aux = num[i];
        num[i] = num[min];
@@ -61,7 +63,9 @@ int main(){
         printf("vet[%d]: %d\n", j+1, vet[j]);
     }
     printf("----------//----------\n");
+
     selection_sort(vet, MAX);
+
     int i;
     for(i = 0; i < MAX; i++)
     {

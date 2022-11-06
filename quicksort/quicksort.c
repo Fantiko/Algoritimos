@@ -5,32 +5,35 @@
 
 void particao(int *v, int left, int right, int *i, int *j)
 {
-    int pivo, temp;
+    int pivo, temp, aux;
     pivo = v[(left + right) / 2];
     *i = left;
     *j = right;
-    do
+    while (*i <= *j)
     {
-        while (v[*i] < pivo)
-        (*i)++;
-        while (v[*j] > pivo)
-            (*j)--;
-        if (*i < *j)
+        while (v[*i]<pivo && *i < right)
         {
-            temp = v[*i];
-            v[*i] = v[*j];
-            v[*j] = temp;
-            *i++;
-            *j--;
+            (*i)++;
         }
-
-    }while (*i <= *j)
+        while (v[*j] > pivo && *j > left)
+        {
+            (*j)--;
+        }
+        if (*i <= *j)
+        {
+            aux = v[*i];
+            v[*i] = v[*j];
+            v[*j] = aux;
+            (*i)++;
+            (*j)--;
+        }
+    }
 }
 
 void quicksort(int *v, int l, int r)
 {
     int i, j;
-    partiscao(v, l, r, &i, &j);
+    particao(v, l, r, &i, &j);
     if (j > l)
     {
         quicksort(v, l, j);
@@ -43,11 +46,11 @@ void quicksort(int *v, int l, int r)
 
 void main()
 {
-    int lacunas[] = {701, 301, 132, 57, 23, 10, 4, 1};
-    quicksort(&lacunas, 1, tamvet-1);
+    int lacunas[] = {71, 30, 12, 57, 2, 10, 4, 1};
+    quicksort(lacunas, 0, tamvet-1);
 
     for (int i = 0; i < 8; i++)
     {
-        printf("%d", &lacunas[i]);
+        printf("%d\n", lacunas[i]);
     }
 }
